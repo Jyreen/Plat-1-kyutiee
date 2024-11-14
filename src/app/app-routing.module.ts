@@ -19,6 +19,9 @@ import { DashboardSwitchComponent } from './dashboard-switch/dashboard-switch.co
 import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailsComponent } from './event-list/event-details.component';
 import { ContactUsComponent } from './contact/contact.component';
+import { BeneficiaryDashboardComponent } from './benefeciary/beneficiary-dashboard.component';
+import { DonorDashboardComponent } from './donor/donor-dashboard.component';
+import { NotFoundComponent } from './lost-page/404.page.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const adminModule = () => import('./admin/admin.module').then(x => x.AdminModule);
@@ -52,9 +55,13 @@ const routes: Routes = [
 
     { path: 'dashboard-switch', component: DashboardSwitchComponent, canActivate: [AuthGuard] }, 
 
+    { path: 'beneficiary', component: BeneficiaryDashboardComponent },
+
+    { path: 'donor', component: DonorDashboardComponent },
+
     { path: 'contact', component: ContactUsComponent},
     // Catch-all redirect for invalid routes
-    { path: '**', redirectTo: '/landing-page', pathMatch: 'full' }
+    { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
